@@ -3,6 +3,7 @@ import { Animated, View, Text, StyleSheet, Platform } from "react-native";
 import { TouchableRipple } from "react-native-paper";
 import MaskedView from "@react-native-masked-view/masked-view";
 
+
 const ButtonToggleGroup = ({
 	values,
 	value,
@@ -75,7 +76,7 @@ const ButtonToggleGroup = ({
 	 * the ripple effect continues to work on Android. As such, we conditionally
 	 * apply the logic for Android vs iOS
 	 */
-	const inactiveContainerIOS = Platform.OS === "ios" ? { zIndex: -1 } : {};
+	const inactiveContainerIOS = { zIndex: -1 };
 
 	return (
 		<View
@@ -171,8 +172,9 @@ export default ButtonToggleGroup;
 
 const styles = StyleSheet.create({
 	container: {
-		height: 48,
+		height: 38,
 		position: "relative",
+		borderRadius: 12,
 	},
 	maskViewContainer: {
 		width: "100%",
@@ -182,10 +184,9 @@ const styles = StyleSheet.create({
 	blueMaskContainer: {
 		position: "absolute",
 		backgroundColor: "black",
-		borderRadius: 4,
+		borderRadius: 10,
 		height: "100%",
-		left: 0,
-		top: 0,
+		
 	},
 	baseButtonContainer: {
 		flex: 1,
@@ -193,13 +194,13 @@ const styles = StyleSheet.create({
 		flexWrap: "nowrap",
 		justifyContent: "space-around",
 		alignItems: "center",
+		borderRadius: 10,
 	},
 	inactiveButtonContainer: {
 		position: "absolute",
-		top: 4,
-		left: 4,
 		width: "100%",
 		height: "100%",
+		borderRadius: 10,
 	},
 	baseTouchableRipple: {
 		height: "100%",
@@ -207,11 +208,25 @@ const styles = StyleSheet.create({
 		display: "flex",
 		alignItems: "center",
 		justifyContent: "center",
+		borderRadius: 10,
+		marginHorizontal: 5,
+
+		shadowColor: '#ADADAD',
+		shadowRadius: 4,
+		shadowOpacity: 0.3,
+		shadowOffset: {
+			width: 0,
+			height: 2,
+		},
+		elevation: 18,
 	},
 	baseButtonText: {
-		paddingHorizontal: 16,
+		fontSize: 14,
+		color: 'rgba(46, 37, 37, 0.43)',
 	},
 	highlightText: {
 		zIndex: 1,
+		color: 'white',
+		fontSize: 15,
 	},
 });
